@@ -4,10 +4,10 @@ import pickle
 
 from flask import Flask, request
 from flask_cors import CORS
+from nltk import data
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
-from nltk import data
 
 data.path.append(f'{pathlib.Path().resolve()}/nltk_data')
 logging.getLogger().setLevel(logging.DEBUG)
@@ -19,6 +19,7 @@ app.debug = True
 
 @app.route('/application', methods=["GET", "POST"])
 def hello_world():
+    logging.info("Application starts processing")
     if request.method == "POST":
         application = request.get_json().get("application", "")
         lemmatizer = WordNetLemmatizer()
@@ -102,4 +103,5 @@ def hello_world():
 
         return {"result": result}
 
-# app.run(host="0.0.0.0")
+
+app.run(host="0.0.0.0")

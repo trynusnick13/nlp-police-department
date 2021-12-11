@@ -1,10 +1,11 @@
 import requests
 
 r = requests.post(
-    "https://nlp-police-department-service.herokuapp.com/application",
+    # "https://nlp-police-department-service.herokuapp.com/application",
+    "http://192.168.1.34:5000/application",
 
     json={
-        'application': "I was attacked and killed",
+        'application': "AAAAAAA",
     }
 )
 print(r.json().get("result", ""))
